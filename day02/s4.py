@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 # Author:X.Ning <ngx@ngx.wiki>
 
+# range的使用
 # 3.x range不会立即生成
 for i in range(1,11):
     print(i)
