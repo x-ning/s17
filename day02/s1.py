@@ -12,3 +12,4 @@ name2 = 'X.Ning'
 new_name2 = name2.center(20)
 print(new_name2)
 
+
