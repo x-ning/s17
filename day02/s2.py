@@ -11,4 +11,11 @@
 # print(v2)
 
 #15. 是否全部为小写
+name1 = 'X.Ning'
+name2 = 'x.ning'
+v1 = name1.islower()
+v2 = name2.islower()
+print(v1)
+print(v2)
+
 
