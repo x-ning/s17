@@ -111,12 +111,3 @@ v1 = num.isdecimal() # '123'
 v2 = num.isdigit()   # '123'，'②'
 v3 = num.isnumeric() # '123'，'二'，'②'
 print(v1,v2,v3)
-
-
-
-
-
-
-
-
-
