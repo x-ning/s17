@@ -94,10 +94,27 @@ hile state_login > 0 :
                                             # i = 1
                                             for item5 in shopping_list:
                                                 shopping_line = '\n' + shopping_line + name + '|' + item5 + "| " + now_time
+                                            # 写入文件，购物记录
+                                            shopping_log = open("shopping_log", 'a', encoding='utf-8')
+                                            shopping_log.write(shopping_line)
+                                            shopping_log.close()
+                                            # 写入文件，余额计算
+                                            line = ''
+                                            i = 1
+                                            for item2 in user_info_list:
+                                                if i < user_info_list.__len__():
+                                                    line = line + item2['username'] + '|' + item2['password'] + '|' + str(
+                                                        item2['times']) + '|' + str(item2['money']) + '\n'
+                                                    i = i + 1
+                                                else:
+                                                    line = line + item2['username'] + '|' + item2['password'] + '|' + str(
+                                                        item2['times']) + "|" + str(item2['money'])
+
                                             # 写入文件
-                                            f4 = open("dodo_shopping_log", 'a', encoding='utf-8')
-                                            f4.write(shopping_line)
-                                            f4.close()
+                                            f2 = open("user_info", 'w')
+                                            f2.write(line)
+                                            f2.close()
+                                            break
 
 
 
