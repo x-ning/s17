@@ -9,6 +9,9 @@
 
 """
 
+import time
+now_time = time.strftime("%Y-%m-%d  %X",time.localtime())
+
 # 读取用户信息：
 user_info = open('user_db','r')
 user_info_data = user_info.read()
@@ -147,31 +150,30 @@ while state_login > 0 :
                                         p = int(input("请输入页码(请输入整数)："))
                         elif user_chose == '2':
 
-                        # 把所有商品拼接成一个字符串
-                        #   #################读取用户历史购买记录###########
-                        shopping_log = open('shopping_log', 'r', encoding='utf-8')
-                        shopping_history = shopping_log.read()
-                        shopping_log.close()
+                            # 把所有商品拼接成一个字符串
+                            #   #################读取用户历史购买记录###########
+                            shopping_log = open('shopping_log', 'r', encoding='utf-8')
+                            shopping_history = shopping_log.read()
+                            shopping_log.close()
 
-                        history_shopping_list = []  # 用户信息列表
-                        history_shopping_str = [i for i in shopping_history.split('\n') if i]  # 移除data.split()生成的空元素
-                        for read_history_item in history_shopping_str:
-                            temp = read_history_item.split('|')
-                            v = {
-                                'log_goods': temp[1],
-                                'log_time': temp[2],
-                                'log_username': temp[0]
-                            }
-                            history_shopping_list.append(v)
+                            history_shopping_list = []  # 用户信息列表
+                            history_shopping_str = [i for i in shopping_history.split('\n') if i]  # 移除data.split()生成的空元素
+                            for read_history_item in history_shopping_str:
+                                temp = read_history_item.split('|')
+                                v = {
+                                    'log_goods': temp[1],
+                                    'log_time': temp[2],
+                                    'log_username': temp[0]
+                                }
+                                history_shopping_list.append(v)
                         # print(history_shopping_list)
                         history_state = input("1-查询所有记录     2-查询历史商品")
                         if history_state == '2':
-                            history_goods = input("请输入您要查询的商品：")
+                            history_commodity = input("请输入您要查询的商品：")
                             for item6 in history_shopping_list:
                                 # print(item6['log_username'])
 
-                                if history_goods == item6['log_goods'] and name == item6['log_username']:
-                                    # if history_goods in history_data :
+                                if history_commodity == item6['log_commodity'] and name == item6['log_username']:
                                     print("您购买过！")
                                     break
                             else:
@@ -180,13 +182,13 @@ while state_login > 0 :
                             for item7 in history_shopping_list:
                                 if name == item7['log_username']:
                                     print(item7['log_username'] + '|' + item7['log_goods'] + '|' + item7['log_time'])
-                        else:
-                        print("欢迎下次再来！再见")
-                        break
-                        state_login = 0
-                        item['times'] = 3
-                        state_login = 0
-                        break
+                                else:
+                                    print("欢迎下次再来！再见")
+                                break
+                                state_login = 0
+                                item['times'] = 3
+                                state_login = 0
+                                break
 
                 else:
                     state_login -= 1
@@ -195,7 +197,7 @@ while state_login > 0 :
                     else:
                         print("输入有误!，请重新输入")
 
-                    item['times']=int(item['times'])-1
+                        item['times']=int(item['times'])-1
                     break
             else:
                 print("用户已被锁定！")
