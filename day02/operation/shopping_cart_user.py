@@ -58,7 +58,7 @@ state_login = 3
 # print(user_login)
 # print(user_totle_price)
 # print(shopping_list )
-hile state_login > 0 :
+while state_login > 0 :
     user_input = input("请输入用户名：")
     pwd_input = input("请输入密码：")
     for user_item in user_info_list :
