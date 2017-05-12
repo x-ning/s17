@@ -26,19 +26,20 @@ for user_item in user_str_list:
     }
     user_info_list.append(user_add)
 
+
 # 查看商品列表
-f3 = open('goods_list','r',encoding='utf-8')#需要转为utf-8
-data = f3.read()
-f3.close()
-goods_list = []#商品信息列表
-goods_str_list = [i for i in data.split('\n') if i]  # 移除data.split()生成的空元素
-for goods_item in goods_str_list:
-    temp = goods_item.split('|')
+commodity_info = open('commodity_db','r',encoding='utf-8')  #统一编码utf-8
+commodity_data = commodity_info.read()
+commodity_info.close()
+commodity_list = [] #商品信息列表
+commodity_str_list = [i for i in commodity_data.split('\n') if i]  #移除data.split()生成的空元素
+for commodity_item in commodity_str_list:
+    temp = commodity_item.split('|')
     v = {
         'goods_name': temp[0],
         'goods_price': temp[1],
         }
-    goods_list.append(v)
+    commodity_list.append(v)
 
 
 
