@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # Author:X.Ning <ngx@ngx.wiki>
 
-# ##### tuple:远祖，不可被修改的列表；不可变类型 #####
+# ##### tuple:远组，不可被修改的列表；不可变类型 #####
 
 user_tuple = ('FCC','ngx','X','N','FCC')
 
