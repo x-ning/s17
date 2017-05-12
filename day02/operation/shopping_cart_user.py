@@ -137,24 +137,24 @@ while state_login > 0 :
                                     if shopping == '0':
                                         shopping_state  = False
                                     else:
-                                        for items in goods_list:
-                                            if shopping == items['goods_name'] :
+                                        for items in commodity_list:
+                                            if shopping == items['commodity_name'] :
                                                 shopping_car.append(shopping)
-                                                shopping_price_totle += int(items['goods_price'])
+                                                shopping_price_totle += int(items['commodity_price'])
                                                 break
                                         else:
                                             pass
                                         p = int(input("请输入页码(请输入整数)："))
                         elif user_chose == '2':
-                        # print(history_shopping)
+
                         # 把所有商品拼接成一个字符串
                         #   #################读取用户历史购买记录###########
-                        f5 = open('shopping_log', 'r', encoding='utf-8')
-                        history_data = f5.read()
-                        f5.close()
+                        shopping_log = open('shopping_log', 'r', encoding='utf-8')
+                        shopping_history = shopping_log.read()
+                        shopping_log.close()
 
                         history_shopping_list = []  # 用户信息列表
-                        history_shopping_str = [i for i in history_data.split('\n') if i]  # 移除data.split()生成的空元素
+                        history_shopping_str = [i for i in shopping_history.split('\n') if i]  # 移除data.split()生成的空元素
                         for read_history_item in history_shopping_str:
                             temp = read_history_item.split('|')
                             v = {
