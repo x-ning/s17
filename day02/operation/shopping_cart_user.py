@@ -91,7 +91,7 @@ while state_login > 0 :
                                             shopping_list.append(shopping_car_item)
 
                                             shopping_line = ''
-                                            # i = 1
+
                                             for item5 in shopping_list:
                                                 shopping_line = '\n' + shopping_line + name + '|' + item5 + "| " + now_time
                                             # 写入文件，购物记录
@@ -101,35 +101,35 @@ while state_login > 0 :
                                             # 写入文件，余额计算
                                             line = ''
                                             i = 1
-                                            for item2 in user_info_list:
+                                            for user_item2 in user_info_list:
                                                 if i < user_info_list.__len__():
-                                                    line = line + item2['username'] + '|' + item2['password'] + '|' + str(
-                                                        item2['times']) + '|' + str(item2['money']) + '\n'
+                                                    line = line + user_item2['username'] + '|' + user_item2['password'] + '|' + str(
+                                                        user_item2['times']) + '|' + str(user_item2['money']) + '\n'
                                                     i = i + 1
                                                 else:
-                                                    line = line + item2['username'] + '|' + item2['password'] + '|' + str(
-                                                        item2['times']) + "|" + str(item2['money'])
+                                                    line = line + user_item2['username'] + '|' + user_item2['password'] + '|' + str(
+                                                        user_item2['times']) + "|" + str(user_item2['money'])
 
                                             # 写入文件
-                                            f2 = open("user_info", 'w')
-                                            f2.write(line)
-                                            f2.close()
+                                            user_info_write = open("user_info", 'w')
+                                            user_info_write.write(line)
+                                            user_info_write.close()
                                             break
-                                    else:
+                                else:
                                     #显示购物列表
-                                    if len(goods_list)%5 > 0 :
-                                        totle_page = str(int(len(goods_list) / 5) + 1)
+                                    if len(commodity_db)%5 > 0 :
+                                        totle_page = str(int(len(commodity_db) / 5) + 1)
                                     else:
-                                        totle_page = str(int(len(goods_list) / 5) )
+                                        totle_page = str(int(len(commodity_db) / 5) )
                                     print("商品名称     " + "|" + "     商品价格     ")
                                     print("--------------------------")
                                     start = (p - 1) * 5
                                     end = p * 5
-                                    for i in goods_list[start:end]:
-                                        v = i['goods_name']
+                                    for i in commodity_list[start:end]:
+                                        v = i['commodity_name']
                                         v1 = v.ljust(9)
                                         v1 = v1.replace(' ', '  ')
-                                        v2 = i['goods_price']
+                                        v2 = i['commodity_price']
                                         # 分页显示
                                         print(v1, v2)
                                     print(str(p) + '/' + totle_page)# 显示当前页数
@@ -149,7 +149,7 @@ while state_login > 0 :
                         # print(history_shopping)
                         # 把所有商品拼接成一个字符串
                         #   #################读取用户历史购买记录###########
-                        f5 = open('dodo_shopping_log', 'r', encoding='utf-8')
+                        f5 = open('shopping_log', 'r', encoding='utf-8')
                         history_data = f5.read()
                         f5.close()
 
