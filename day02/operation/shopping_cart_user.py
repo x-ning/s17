@@ -25,7 +25,8 @@ for user_item in user_str_list:
         'money':int(temp[3])
     }
     user_info_list.append(user_add)
-
+# print(user_info_list)
+# print(user_str_list)
 
 # 查看商品列表
 commodity_info = open('commodity_db','r',encoding='utf-8')  #统一编码utf-8
@@ -35,15 +36,17 @@ commodity_list = [] #商品信息列表
 commodity_str_list = [i for i in commodity_data.split('\n') if i]  #移除data.split()生成的空元素
 for commodity_item in commodity_str_list:
     temp = commodity_item.split('|')
-    v = {
+    commodity_add = {
         'commodity_name': temp[0],
         'commodity_price': temp[1],
         }
-    commodity_list.append(v)
+    commodity_list.append(commodity_add)
+# print(commodity_list)
+# print(commodity_str_list)
 
-# 用户登录
-message_login = '%s欢迎您，账户余额：%d' #用户，余额
-message_totle_price="账单总金额：%d"
+# 用户登录后信息
+user_login = '%s欢迎您，账户余额：%d' #用户，余额
+user_totle_price="账单总金额：%d"
 shopping_price_totle=0
 shopping_car=[]
 shopping_list = []
@@ -52,9 +55,49 @@ history_shopping_str=''
 p = 1#购物列表初始页码
 state_login = 3
 
-print(message_login)
+# print(user_login)
+# print(user_totle_price)
+# print(shopping_list )
+hile state_login > 0 :
+    user_input = input("请输入用户名：")
+    pwd_input = input("请输入密码：")
+    for user_item in user_info_list :
+        if user_input == user_item['username'] :    # 判断是否数据库内存在的用户
+            if int(user_item['times']) > 0 :        # 判断用户登录次数
+                if pwd_input == user_item['password'] : # 判断用户密码是否匹配
+                    print(user_input %(user_input,user_item['money']))  # 登录成功，列出个人信息
+                    # index.py
+                    while True :
+                        print("***********************************************")
+                        user_chose = input("请选择您要的操作：\n1.购物\n2.查询\n3.退出\n")
+                        shopping_state = True
+                        if user_chose == '1':
+                            # print("**********************************************")
+                            while True:
+                                print("*******商品列表如下：*******")
+                                if shopping_state==False:
+                                    print("购物清单如下：\n")
+                                    print(shopping_car)
+                                    print(user_totle_price %(shopping_price_totle))
+                                    if shopping_price_totle > int(user_item['money']):
+                                        print("余额不足，重新购买")
+                                        shopping_car.clear()                #余额不足重新购买
+                                        shopping_price_totle = 0
+                                        shopping_state = True
+                                    else:
+                                        print("购买成功")
+                                        user_item['money']=int(user_item['money'])-shopping_price_totle
+                                        for shopping_car_item in shopping_car:
+                                            shopping_list.append(shopping_car_item)
 
-
+                                            shopping_line = ''
+                                            # i = 1
+                                            for item5 in shopping_list:
+                                                shopping_line = '\n' + shopping_line + name + '|' + item5 + "| " + now_time
+                                            # 写入文件
+                                            f4 = open("dodo_shopping_log", 'a', encoding='utf-8')
+                                            f4.write(shopping_line)
+                                            f4.close()
 
 
 
