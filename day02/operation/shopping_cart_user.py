@@ -36,12 +36,23 @@ commodity_str_list = [i for i in commodity_data.split('\n') if i]  #移除data.s
 for commodity_item in commodity_str_list:
     temp = commodity_item.split('|')
     v = {
-        'goods_name': temp[0],
-        'goods_price': temp[1],
+        'commodity_name': temp[0],
+        'commodity_price': temp[1],
         }
     commodity_list.append(v)
 
+# 用户登录
+message_login = '%s欢迎您，账户余额：%d' #用户，余额
+message_totle_price="账单总金额：%d"
+shopping_price_totle=0
+shopping_car=[]
+shopping_list = []
+history_shopping_list= []
+history_shopping_str=''
+p = 1#购物列表初始页码
+state_login = 3
 
+print(message_login)
 
 
 
