@@ -12,4 +12,4 @@ print(li_a)
 li.append('seven')
 print(li)
 
-# c. 
+# c.
