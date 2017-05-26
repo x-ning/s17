@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 # Author: X.Ning <ngx@ngx.wiki>
+import os
 import socket,time,_thread
 socket.setdefaulttimeout(5) #设置默认超时时间
 
@@ -25,9 +26,9 @@ def ip_scan(ip):
     输入IP，扫描IP的0-65535端口情况；
     """
     try:
-        print("开始扫描%s",ip)
+        print("开始扫描%s" % ip)
         star_time=time.time()
-        for i in range(0,65535):
+        for i in range(0,65534):
             _thread.start_new_thread(socket_port(ip,int(i)))
         print("端口扫描完成，总共用时：%s",(time.time()-star_time))
         #raw_input("Press Enter to Exit")
@@ -35,6 +36,6 @@ def ip_scan(ip):
         print("扫描IP出错")
 
 if __name__=='__main__':
-    url=raw_input('Input the ip you want to scan:')
+    url=input('Input the ip you want to scan:')
     lock=_thread.allocate_lock()
     ip_scan(url)
