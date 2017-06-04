@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 # Author: X.Ning <ngx@ngx.wiki>
+
+###### 时间模块 #####
 import time
 # print(time.time())
 #
