@@ -15,4 +15,4 @@ import re
 # print(re.sub('^(\w+)(\s)(\w+)(\s)(\w+)',r'5\4\3\2\1','alex      make      love'))
 # print(re.sub('',r'5\4\3\2\1','alex      make      love'))
 
-print(re.sub('',r' \5\4\3\2\1','alex " \ + = make ----/=    love'))
+# print(re.sub('',r' \5\4\3\2\1','alex " \ + = make ----/=    love'))
